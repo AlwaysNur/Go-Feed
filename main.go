@@ -15,12 +15,11 @@ func main() {
 	fmt.Println("Starting server on http://localhost:8080")
 	fmt.Println("Starting API on http://localhost:8080/api")
 	// main
-	r.HandleFunc("/", staticserver.Index)
 	r.HandleFunc("/submit", staticserver.SubmitPage)
 	r.HandleFunc("/css", staticserver.Css)
+	r.HandleFunc("/", api.Response).Methods("GET")
 	// api post, get
 	r.HandleFunc("/api", api.HandlePost).Methods("POST")
-	r.HandleFunc("/api", api.Response).Methods("GET")
 	// host on port 8080
 	log.Fatal(http.ListenAndServe(":8080", r))
 

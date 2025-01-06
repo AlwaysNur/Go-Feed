@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"regexp"
 	"strings"
 )
 
@@ -39,7 +40,8 @@ func HandlePost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer r.Body.Close()
-	get += "<div class='m'>" + string(body) + "</div>"
+	outputText := ConvertLinksToHTML(string(body))
+	get += "<div class='m'>" + outputText + "</div>"
 	// received data
 	fmt.Fprintf(w, "Received POST request with body: %s\n", body)
 
@@ -55,6 +57,22 @@ func HandlePost(w http.ResponseWriter, r *http.Request) {
 
 	// Output the cleaned up ASCII string
 	// fmt.Println(asciiString)
+}
+
+// ConvertLinksToHTML takes a string and converts all detected URLs to HTML anchor tags.
+func ConvertLinksToHTML(text string) string {
+	// Regular expression to match URLs
+	urlPattern := `(https?://[^\s]+)`
+
+	// Compile the regular expression
+	re := regexp.MustCompile(urlPattern)
+
+	// Replace the URLs in the text with <a> tags
+	convertedText := re.ReplaceAllStringFunc(text, func(url string) string {
+		return fmt.Sprintf(`<a href="%s" target="_blank">%s</a>`, url, url)
+	})
+
+	return convertedText
 }
 
 func Response(w http.ResponseWriter, req *http.Request) {

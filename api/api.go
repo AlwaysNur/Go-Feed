@@ -26,7 +26,7 @@ func HandlePost(w http.ResponseWriter, r *http.Request) {
 
 	token := parts[1]
 	// Validate the token (for example, check it against a known valid token)
-	if token != "C^=Z~t6l6Ro$R>T~E93,di*fesa3rQ:6Z_c?!t>GX>=9io>" {
+	if token != "your-token" {
 		http.Error(w, "Invalid token", http.StatusUnauthorized)
 		fmt.Println("** Invalid token **")
 		return

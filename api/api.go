@@ -39,7 +39,7 @@ func HandlePost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer r.Body.Close()
-	get += "<div class='m'>" + string(body) + "</div><br>"
+	get += "<div class='m'>" + string(body) + "</div>"
 	// received data
 	fmt.Fprintf(w, "Received POST request with body: %s\n", body)
 

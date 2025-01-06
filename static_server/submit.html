@@ -11,11 +11,9 @@
         <h1>Add Post</h1>
         <h2 style="font-size: 14pt;">This Will Add The Text In A Speech Bubble</h2>
         <form id="myForm">
-            <!-- Text Data Input -->
             <label for="textData">Enter Text:</label>
             <input type="text" id="textData" name="textData"  placeholder="Text..." required>
 
-            <!-- Authorization Token Input -->
             <label for="authToken">Authorization Token (Password...):</label>
             <input type="text" id="authToken" name="authToken" placeholder="Enter your API token here" required>
 
@@ -23,7 +21,6 @@
             <div id="error-message" class="error"></div>
         </form>
     </div>
-
     <script>
         document.getElementById('myForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the default form submission

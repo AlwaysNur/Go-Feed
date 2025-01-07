@@ -8,4 +8,4 @@
 - <a href="http://localhost:8080/css">`/css`</a>: CSS stylesheet.
 ### Config:
 - The password is defined in the  [api.go](https://github.com/alwaysnur/go-feed/blob/main/api/api.go#L29) file.
-- The password is defined in the  [index.css](https://github.com/alwaysnur/go-feed/blob/main/static_server/index.css#L29) file.
+- The background image/color/gradent is in the [index.css](https://github.com/alwaysnur/go-feed/blob/main/static_server/index.css#L13) file.
